@@ -2,16 +2,46 @@
 
 namespace AluisioPires\Permission;
 
+use AluisioPires\Permission\Contracts\Permission as PermissionContract;
+use AluisioPires\Permission\Contracts\Role as RoleContract;
+use Composer\InstalledVersions;
+use Illuminate\Contracts\Auth\Access\Gate;
+use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Foundation\Console\AboutCommand;
+use Illuminate\Routing\Route;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\Compilers\BladeCompiler;
 
 class PermissionServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->commands([]);
+        $this->offerPublishing();
+
+        $this->registerAbout();
+    }
+
+    public function register()
+    {
+        //
+    }
+
+    protected function offerPublishing(): void
+    {
+        if (! $this->app->runningInConsole()) {
+            return;
+        }
+
+        if (! function_exists('config_path')) {
+            // function not available and 'publish' not relevant in Lumen
+            return;
+        }
+
+        $this->publishesFiles();
     }
 
     /**
@@ -27,6 +57,17 @@ class PermissionServiceProvider extends ServiceProvider
             ->flatMap(fn ($path) => $filesystem->glob($path.'*_'.$migrationFileName))
             ->push($this->app->databasePath()."/migrations/{$timestamp}_{$migrationFileName}")
             ->first();
+    }
+
+    protected function registerAbout(): void
+    {
+        if (! class_exists(InstalledVersions::class) || ! class_exists(AboutCommand::class)) {
+            return;
+        }
+
+        AboutCommand::add('AluisioPires Permissions', static fn () => [
+            'Version' => InstalledVersions::getPrettyVersion('aluisio-pires/filament-permission'),
+        ]);
     }
 
     private function publishesFiles(): void
