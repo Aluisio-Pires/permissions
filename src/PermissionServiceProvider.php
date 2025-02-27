@@ -2,19 +2,12 @@
 
 namespace AluisioPires\Permission;
 
-use AluisioPires\Permission\Contracts\Permission as PermissionContract;
-use AluisioPires\Permission\Contracts\Role as RoleContract;
 use Composer\InstalledVersions;
-use Illuminate\Contracts\Auth\Access\Gate;
-use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Console\AboutCommand;
-use Illuminate\Routing\Route;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\Compilers\BladeCompiler;
 
 class PermissionServiceProvider extends ServiceProvider
 {
