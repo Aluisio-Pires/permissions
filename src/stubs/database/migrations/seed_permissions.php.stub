@@ -1,6 +1,7 @@
 <?php
 
 use Database\seeders\PermissionSeeder;
+use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Artisan;
 
 return new class extends Migration

@@ -1,14 +1,16 @@
 <?php
 
-namespace Database\seeders;
+namespace Database\Seeders;
 
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
+use ReflectionClass;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 
 class PermissionSeeder extends Seeder
 {
@@ -17,7 +19,7 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         $role = Role::firstOrCreate(['name' => 'admin']);
         $modelPermissions = $this->crudPermissionNames();
@@ -32,7 +34,7 @@ class PermissionSeeder extends Seeder
             Permission::firstOrCreate(['name' => $permission, 'guard_name' => 'web']);
         });
 
-        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         $role->givePermissionTo($permissions);
     }
@@ -51,7 +53,7 @@ class PermissionSeeder extends Seeder
                 $valid = false;
 
                 if (class_exists($class)) {
-                    $reflection = new \ReflectionClass($class);
+                    $reflection = new ReflectionClass($class);
                     $valid = $reflection->isSubclassOf(Model::class) &&
                         ! $reflection->isAbstract();
                 }

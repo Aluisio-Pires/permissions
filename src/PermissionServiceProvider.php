@@ -2,16 +2,11 @@
 
 namespace AluisioPires\Permission;
 
-use Composer\InstalledVersions;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Foundation\Console\AboutCommand;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
 
 class PermissionServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         $this->registerCommands();
     }
