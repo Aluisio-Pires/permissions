@@ -27,91 +27,91 @@ class CreateFiles extends Command
             ]
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/database/migrations/seed_permissions.php.stub', $this->getMigrationFileName('seed_permissions.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/app/Filament/Pages/PermissionRolePage.php.stub', app_path('Filament/Pages/PermissionRolePage.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/app/Filament/Resources/PermissionResource/Pages/CreatePermission.php.stub', app_path('Filament/Resources/PermissionResource/Pages/CreatePermission.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/app/Filament/Resources/PermissionResource/Pages/EditPermission.php.stub', app_path('Filament/Resources/PermissionResource/Pages/EditPermission.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/app/Filament/Resources/PermissionResource/Pages/ListPermissions.php.stub', app_path('Filament/Resources/PermissionResource/Pages/ListPermissions.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/app/Filament/Resources/PermissionResource/Pages/ViewPermission.php.stub', app_path('Filament/Resources/PermissionResource/Pages/ViewPermission.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/app/Filament/Resources/PermissionResource/RelationManagers/RolesRelationManager.php.stub', app_path('Filament/Resources/PermissionResource/RelationManagers/RolesRelationManager.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/app/Filament/Resources/RoleResource/Pages/CreateRole.php.stub', app_path('Filament/Resources/RoleResource/Pages/CreateRole.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/app/Filament/Resources/RoleResource/Pages/EditRole.php.stub', app_path('Filament/Resources/RoleResource/Pages/EditRole.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/app/Filament/Resources/RoleResource/Pages/ListRoles.php.stub', app_path('Filament/Resources/RoleResource/Pages/ListRoles.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/app/Filament/Resources/RoleResource/Pages/ViewRole.php.stub', app_path('Filament/Resources/RoleResource/Pages/ViewRole.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/app/Filament/Resources/RoleResource/RelationManagers/PermissionsRelationManager.php.stub', app_path('Filament/Resources/RoleResource/RelationManagers/PermissionsRelationManager.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/app/Filament/Resources/RoleResource/RelationManagers/UsersRelationManager.php.stub', app_path('Filament/Resources/RoleResource/RelationManagers/UsersRelationManager.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/app/Filament/Resources/RoleResource.php.stub', app_path('Filament/Resources/RoleResource.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/app/Models/Permission.php.stub', app_path('Models/Permission.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/app/Models/Role.php.stub', app_path('Models/Role.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/app/Policies/PermissionPolicy.php.stub', app_path('Policies/PermissionPolicy.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/app/Policies/RolePolicy.php.stub', app_path('Policies/RolePolicy.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/database/factories/PermissionFactory.php.stub', database_path('factories/PermissionFactory.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/database/factories/RoleFactory.php.stub', database_path('factories/RoleFactory.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/database/seeders/PermissionSeeder.php.stub', database_path('seeders/PermissionSeeder.php'),
         );
 
-        copy(
+        $this->createPaths(
             __DIR__ . '/stubs/resources/views/filament/pages/permission-role-page.blade.php.stub', resource_path('views/filament/pages/permission-role-page.blade.php'),
         );
     }
@@ -131,5 +131,11 @@ class CreateFiles extends Command
             ->flatMap(fn ($path) => $filesystem->glob($path.'*_'.$migrationFileName))
             ->push(app()->databasePath()."/migrations/{$timestamp}_{$migrationFileName}")
             ->first();
+    }
+
+    public function createPaths($from, $to): void
+    {
+        mkdir($to, 0777, true);
+        copy($from, $to);
     }
 }
