@@ -135,7 +135,6 @@ class CreateFiles extends Command
 
     public function createPaths($from, $to): void
     {
-        mkdir($to, 0777, true);
         copy($from, $to);
     }
 }
