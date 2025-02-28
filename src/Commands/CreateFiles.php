@@ -103,6 +103,10 @@ class CreateFiles extends Command
         );
 
         $this->createFile(
+            __DIR__.'/../stubs/app/Filament/Resources/PermissionResource.php.stub', app_path('Filament/Resources/PermissionResource.php'),
+        );
+
+        $this->createFile(
             __DIR__.'/../stubs/app/Models/Permission.php.stub', app_path('Models/Permission.php'),
         );
 
