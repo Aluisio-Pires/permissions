@@ -28,91 +28,91 @@ class CreateFiles extends Command
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/database/migrations/seed_permissions.php.stub', $this->getMigrationFileName('seed_permissions.php'),
+            __DIR__ . '/../stubs/database/migrations/seed_permissions.php.stub', $this->getMigrationFileName('seed_permissions.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/app/Filament/Pages/PermissionRolePage.php.stub', app_path('Filament/Pages/PermissionRolePage.php'),
+            __DIR__ . '/../stubs/app/Filament/Pages/PermissionRolePage.php.stub', app_path('Filament/Pages/PermissionRolePage.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/app/Filament/Resources/PermissionResource/Pages/CreatePermission.php.stub', app_path('Filament/Resources/PermissionResource/Pages/CreatePermission.php'),
+            __DIR__ . '/../stubs/app/Filament/Resources/PermissionResource/Pages/CreatePermission.php.stub', app_path('Filament/Resources/PermissionResource/Pages/CreatePermission.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/app/Filament/Resources/PermissionResource/Pages/EditPermission.php.stub', app_path('Filament/Resources/PermissionResource/Pages/EditPermission.php'),
+            __DIR__ . '/../stubs/app/Filament/Resources/PermissionResource/Pages/EditPermission.php.stub', app_path('Filament/Resources/PermissionResource/Pages/EditPermission.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/app/Filament/Resources/PermissionResource/Pages/ListPermissions.php.stub', app_path('Filament/Resources/PermissionResource/Pages/ListPermissions.php'),
+            __DIR__ . '/../stubs/app/Filament/Resources/PermissionResource/Pages/ListPermissions.php.stub', app_path('Filament/Resources/PermissionResource/Pages/ListPermissions.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/app/Filament/Resources/PermissionResource/Pages/ViewPermission.php.stub', app_path('Filament/Resources/PermissionResource/Pages/ViewPermission.php'),
+            __DIR__ . '/../stubs/app/Filament/Resources/PermissionResource/Pages/ViewPermission.php.stub', app_path('Filament/Resources/PermissionResource/Pages/ViewPermission.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/app/Filament/Resources/PermissionResource/RelationManagers/RolesRelationManager.php.stub', app_path('Filament/Resources/PermissionResource/RelationManagers/RolesRelationManager.php'),
+            __DIR__ . '/../stubs/app/Filament/Resources/PermissionResource/RelationManagers/RolesRelationManager.php.stub', app_path('Filament/Resources/PermissionResource/RelationManagers/RolesRelationManager.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/app/Filament/Resources/RoleResource/Pages/CreateRole.php.stub', app_path('Filament/Resources/RoleResource/Pages/CreateRole.php'),
+            __DIR__ . '/../stubs/app/Filament/Resources/RoleResource/Pages/CreateRole.php.stub', app_path('Filament/Resources/RoleResource/Pages/CreateRole.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/app/Filament/Resources/RoleResource/Pages/EditRole.php.stub', app_path('Filament/Resources/RoleResource/Pages/EditRole.php'),
+            __DIR__ . '/../stubs/app/Filament/Resources/RoleResource/Pages/EditRole.php.stub', app_path('Filament/Resources/RoleResource/Pages/EditRole.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/app/Filament/Resources/RoleResource/Pages/ListRoles.php.stub', app_path('Filament/Resources/RoleResource/Pages/ListRoles.php'),
+            __DIR__ . '/../stubs/app/Filament/Resources/RoleResource/Pages/ListRoles.php.stub', app_path('Filament/Resources/RoleResource/Pages/ListRoles.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/app/Filament/Resources/RoleResource/Pages/ViewRole.php.stub', app_path('Filament/Resources/RoleResource/Pages/ViewRole.php'),
+            __DIR__ . '/../stubs/app/Filament/Resources/RoleResource/Pages/ViewRole.php.stub', app_path('Filament/Resources/RoleResource/Pages/ViewRole.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/app/Filament/Resources/RoleResource/RelationManagers/PermissionsRelationManager.php.stub', app_path('Filament/Resources/RoleResource/RelationManagers/PermissionsRelationManager.php'),
+            __DIR__ . '/../stubs/app/Filament/Resources/RoleResource/RelationManagers/PermissionsRelationManager.php.stub', app_path('Filament/Resources/RoleResource/RelationManagers/PermissionsRelationManager.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/app/Filament/Resources/RoleResource/RelationManagers/UsersRelationManager.php.stub', app_path('Filament/Resources/RoleResource/RelationManagers/UsersRelationManager.php'),
+            __DIR__ . '/../stubs/app/Filament/Resources/RoleResource/RelationManagers/UsersRelationManager.php.stub', app_path('Filament/Resources/RoleResource/RelationManagers/UsersRelationManager.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/app/Filament/Resources/RoleResource.php.stub', app_path('Filament/Resources/RoleResource.php'),
+            __DIR__ . '/../stubs/app/Filament/Resources/RoleResource.php.stub', app_path('Filament/Resources/RoleResource.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/app/Models/Permission.php.stub', app_path('Models/Permission.php'),
+            __DIR__ . '/../stubs/app/Models/Permission.php.stub', app_path('Models/Permission.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/app/Models/Role.php.stub', app_path('Models/Role.php'),
+            __DIR__ . '/../stubs/app/Models/Role.php.stub', app_path('Models/Role.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/app/Policies/PermissionPolicy.php.stub', app_path('Policies/PermissionPolicy.php'),
+            __DIR__ . '/../stubs/app/Policies/PermissionPolicy.php.stub', app_path('Policies/PermissionPolicy.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/app/Policies/RolePolicy.php.stub', app_path('Policies/RolePolicy.php'),
+            __DIR__ . '/../stubs/app/Policies/RolePolicy.php.stub', app_path('Policies/RolePolicy.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/database/factories/PermissionFactory.php.stub', database_path('factories/PermissionFactory.php'),
+            __DIR__ . '/../stubs/database/factories/PermissionFactory.php.stub', database_path('factories/PermissionFactory.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/database/factories/RoleFactory.php.stub', database_path('factories/RoleFactory.php'),
+            __DIR__ . '/../stubs/database/factories/RoleFactory.php.stub', database_path('factories/RoleFactory.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/database/seeders/PermissionSeeder.php.stub', database_path('seeders/PermissionSeeder.php'),
+            __DIR__ . '/../stubs/database/seeders/PermissionSeeder.php.stub', database_path('seeders/PermissionSeeder.php'),
         );
 
         $this->createPaths(
-            __DIR__ . '/stubs/resources/views/filament/pages/permission-role-page.blade.php.stub', resource_path('views/filament/pages/permission-role-page.blade.php'),
+            __DIR__ . '/../stubs/resources/views/filament/pages/permission-role-page.blade.php.stub', resource_path('views/filament/pages/permission-role-page.blade.php'),
         );
     }
 
