@@ -52,17 +52,6 @@ class PermissionServiceProvider extends ServiceProvider
             ->first();
     }
 
-    protected function registerAbout(): void
-    {
-        if (! class_exists(InstalledVersions::class) || ! class_exists(AboutCommand::class)) {
-            return;
-        }
-
-        AboutCommand::add('AluisioPires Permissions', static fn () => [
-            'Version' => InstalledVersions::getPrettyVersion('aluisio-pires/filament-permission'),
-        ]);
-    }
-
     private function publishesFiles(): void
     {
         Artisan::call(
@@ -74,90 +63,90 @@ class PermissionServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../database/migrations/seed_permissions.php.stub' => $this->getMigrationFileName('seed_permissions.php'),
-        ], 'permission-migrations');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../app/Filament/Pages/PermissionRolePage.php.stub' => app_path('Filament/Pages/PermissionRolePage.php'),
-        ], 'permission-filament');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../app/Filament/Resources/PermissionResource/Pages/CreatePermission.php.stub' => app_path('Filament/Resources/PermissionResource/Pages/CreatePermission.php'),
-        ], 'permission-filament');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../app/Filament/Resources/PermissionResource/Pages/EditPermission.php.stub' => app_path('Filament/Resources/PermissionResource/Pages/EditPermission.php'),
-        ], 'permission-filament');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../app/Filament/Resources/PermissionResource/Pages/ListPermissions.php.stub' => app_path('Filament/Resources/PermissionResource/Pages/ListPermissions.php'),
-        ], 'permission-filament');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../app/Filament/Resources/PermissionResource/Pages/ViewPermission.php.stub' => app_path('Filament/Resources/PermissionResource/Pages/ViewPermission.php'),
-        ], 'permission-filament');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../app/Filament/Resources/PermissionResource/RelationManagers/RolesRelationManager.php.stub' => app_path('Filament/Resources/PermissionResource/RelationManagers/RolesRelationManager.php'),
-        ], 'permission-filament');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../app/Filament/Resources/RoleResource/Pages/CreateRole.php.stub' => app_path('Filament/Resources/RoleResource/Pages/CreateRole.php'),
-        ], 'permission-filament');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../app/Filament/Resources/RoleResource/Pages/EditRole.php.stub' => app_path('Filament/Resources/RoleResource/Pages/EditRole.php'),
-        ], 'permission-filament');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../app/Filament/Resources/RoleResource/Pages/ListRoles.php.stub' => app_path('Filament/Resources/RoleResource/Pages/ListRoles.php'),
-        ], 'permission-filament');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../app/Filament/Resources/RoleResource/Pages/ViewRole.php.stub' => app_path('Filament/Resources/RoleResource/Pages/ViewRole.php'),
-        ], 'permission-filament');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../app/Filament/Resources/RoleResource/RelationManagers/PermissionsRelationManager.php.stub' => app_path('Filament/Resources/RoleResource/RelationManagers/PermissionsRelationManager.php'),
-        ], 'permission-filament');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../app/Filament/Resources/RoleResource/RelationManagers/UsersRelationManager.php.stub' => app_path('Filament/Resources/RoleResource/RelationManagers/UsersRelationManager.php'),
-        ], 'permission-filament');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../app/Filament/Resources/RoleResource.php.stub' => app_path('Filament/Resources/RoleResource.php'),
-        ], 'permission-filament');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../app/Models/Permission.php.stub' => app_path('Models/Permission.php'),
-        ], 'permission-models');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../app/Models/Role.php.stub' => app_path('Models/Role.php'),
-        ], 'permission-models');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../app/Policies/PermissionPolicy.php.stub' => app_path('Policies/PermissionPolicy.php'),
-        ], 'permission-policies');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../app/Policies/RolePolicy.php.stub' => app_path('Policies/RolePolicy.php'),
-        ], 'permission-policies');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../database/factories/PermissionFactory.php.stub' => database_path('factories/PermissionFactory.php'),
-        ], 'permission-factories');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../database/factories/RoleFactory.php.stub' => database_path('factories/RoleFactory.php'),
-        ], 'permission-factories');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../database/seeders/PermissionSeeder.php.stub' => database_path('seeders/PermissionSeeder.php'),
-        ], 'permission-factories');
+        ], 'permission');
 
         $this->publishes([
             __DIR__.'/../resources/views/filament/pages/permission-role-page.blade.php.stub' => resource_path('views/filament/pages/permission-role-page.blade.php'),
-        ], 'permission-views');
+        ], 'permission');
     }
 }
