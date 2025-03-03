@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
+use Database\Factories\PermissionFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Permission extends \Spatie\Permission\Models\Permission
 {
+    /** @use HasFactory<PermissionFactory> */
     use HasFactory;
 
     protected $fillable = [
         'name',
         'guard_name',
     ];
-    //
 }

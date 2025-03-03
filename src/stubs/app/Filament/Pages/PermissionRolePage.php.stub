@@ -2,26 +2,32 @@
 
 namespace App\Filament\Pages;
 
-use App\Models\Permission;
-use App\Models\Role;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Collection;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
 
 class PermissionRolePage extends Page
 {
-    /** @var Collection<int, Role> */
+    /**
+     * @var Collection<int, Role>
+     */
     public Collection $roles;
 
-    /** @var Collection<int, Permission> */
+    /**
+     * @var Collection<int, Permission>
+     */
     public Collection $permissions;
 
     public string $search = '';
 
-    /** @var array<int, mixed> */
-    public array $selectedPermissions;
+    /**
+     * @var array<mixed>
+     */
+    public array $selectedPermissions = [];
 
     protected static ?string $navigationIcon = 'heroicon-o-key';
 
@@ -49,19 +55,22 @@ class PermissionRolePage extends Page
 
     public static function canAccess(): bool
     {
-        // @phpstan-ignore-next-line
-        return auth()->user()?->hasPermissionTo('update roles');
+        return auth()->user()?->hasPermissionTo('update roles') ?? false;
     }
 
     public function mount(): void
     {
-        $this->roles = Role::all();
-        $this->permissions = Permission::all();
+        $this->roles = Role::with('permissions')->get(['id', 'name', 'created_at']);
+        $this->permissions = Permission::get(['id', 'name', 'created_at']);
 
+        $this->loadPermissions();
+    }
+
+    public function loadPermissions(): void
+    {
         $this->selectedPermissions = $this->roles->mapWithKeys(function (Role $role) {
-            return [(int) $role->id => $role->permissions->pluck('id')->toArray()];
+            return [$role->id => $role->permissions->pluck('id')->toArray()];
         })->toArray();
-
     }
 
     public function searchPermissions(string $value): void
@@ -84,6 +93,6 @@ class PermissionRolePage extends Page
             ->success()
             ->send();
 
-        session()->flash('success', __('Permissions updated successfully!'));
+        session()->flash('success', __('Permissões atualizadas com sucesso!'));
     }
 }
